@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import numpy as np
 import pandas as pd
 import joblib
+import os
 
 # ======================================================
 # Wrapper class for advanced model
@@ -29,18 +30,29 @@ class InsiderThreatModel:
             return np.column_stack([1 - preds, preds])
 
 # ======================================================
+# Paths
+# ======================================================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SIMPLE_MODEL_PATH = os.path.join(BASE_DIR, "dataq.pkl")
+ADVANCED_MODEL_PATH = os.path.join(BASE_DIR, "insider_threat_model.pkl")
+
+# ======================================================
 # Load models
 # ======================================================
 # 1. Simple Isolation Forest model
-with open("dataq.pkl", "rb") as f:
+if not os.path.exists(SIMPLE_MODEL_PATH):
+    raise RuntimeError(f"{SIMPLE_MODEL_PATH} not found!")
+with open(SIMPLE_MODEL_PATH, "rb") as f:
     saved_data = joblib.load(f)
 scaler_simple = saved_data["scaler"]
 clf_simple = saved_data["model"]
 
 # 2. Advanced model
-adv_data = joblib.load("insider_threat_model.pkl")
+if not os.path.exists(ADVANCED_MODEL_PATH):
+    raise RuntimeError(f"{ADVANCED_MODEL_PATH} not found!")
+with open(ADVANCED_MODEL_PATH, "rb") as f:
+    adv_data = joblib.load(f)
 
-# If feature_columns missing in pickle, define manually
 feature_columns = [
     "size", "attachments", "external_email", "hour_sin", "hour_cos",
     "day_sin", "day_cos", "is_weekend", "unusual_hour", "large_email",
