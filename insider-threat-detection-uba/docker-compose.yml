@@ -1,0 +1,175 @@
+version: '3.8'
+
+services:
+  insider-threat-detection:
+    build: .
+    container_name: insider-threat-detection
+    ports:
+      - "5000:5000"
+      - "8080:8080"  # Health check port
+    volumes:
+      # Mount configuration
+      - ./config/config.yaml:/app/config/config.yaml:ro
+      # Mount data directory for persistence
+      - insider_threat_data:/app/data
+      - insider_threat_logs:/app/logs
+      - insider_threat_models:/app/models
+      - insider_threat_reports:/app/reports
+    environment:
+      - PYTHONPATH=/app/src
+      - FLASK_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - redis
+    networks:
+      - insider-threat-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: insider-threat-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    networks:
+      - insider-threat-network
+
+  # Optional: Database backup service
+  db-backup:
+    image: alpine:latest
+    container_name: insider-threat-backup
+    volumes:
+      - insider_threat_data:/data:ro
+      - ./backups:/backups
+    environment:
+      - BACKUP_SCHEDULE=0 2 * * *  # Daily at 2 AM
+    command: >
+      sh -c "
+        apk add --no-cache sqlite &&
+        echo '${BACKUP_SCHEDULE} sqlite3 /data/threat_detection.db \".backup /backups/backup_\$(date +\%Y\%m\%d_\%H\%M\%S).db\"' | crontab - &&
+        crond -f
+      "
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+
+  # Optional: Log aggregation with ELK stack
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    container_name: insider-threat-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+    profiles:
+      - logging
+
+  logstash:
+    image: logstash:8.8.0
+    container_name: insider-threat-logstash
+    ports:
+      - "5044:5044"
+    volumes:
+      - ./config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - insider_threat_logs:/app/logs:ro
+    environment:
+      - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+    profiles:
+      - logging
+
+  kibana:
+    image: kibana:8.8.0
+    container_name: insider-threat-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+    profiles:
+      - logging
+
+  # Optional: Monitoring with Prometheus and Grafana
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: insider-threat-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: insider-threat-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./config/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./config/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    networks:
+      - insider-threat-network
+    profiles:
+      - monitoring
+
+volumes:
+  insider_threat_data:
+    driver: local
+  insider_threat_logs:
+    driver: local
+  insider_threat_models:
+    driver: local
+  insider_threat_reports:
+    driver: local
+  redis_data:
+    driver: local
+  elasticsearch_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  insider-threat-network:
+    driver: bridge
