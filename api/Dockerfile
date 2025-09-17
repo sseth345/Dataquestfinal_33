@@ -1,5 +1,5 @@
 # Use official Python 3.10 image (XGBoost compatible)
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # Set workdir
 WORKDIR /app
