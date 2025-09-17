@@ -9,6 +9,10 @@ import threatMap from '@/assets/threat-map.jpg';
 import mobileapp from '@/assets/mobileapp.jpg';
 import blockchain1 from '@/assets/blockchain1.jpg';
 import blockchain2 from '@/assets/blockchain2.jpg';
+import perf from '@/assets/perf.png';
+
+import modelphoto from '@/assets/modelphoto.png';
+import dataset from '@/assets/dataset.png';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -20,17 +24,17 @@ const Gallery = () => {
       description: 'Decentralized blockchain technology with secure transaction processing and distributed ledger management'
     },
     {
-      src: mobileAppScreenshot,
+      src: modelphoto,
       title: 'ML Model',
       description: 'Advanced machine learning algorithms for predictive analysis and intelligent automation'
     },
     {
-      src: networkSecurity,
+      src: perf,
       title: 'Performance Metrics',
       description: 'Real-time system performance tracking with detailed analytics and optimization insights'
     },
     {
-      src: threatMap,
+      src: dataset,
       title: 'Dataset',
       description: 'Comprehensive data collection and management with structured information processing'
     },

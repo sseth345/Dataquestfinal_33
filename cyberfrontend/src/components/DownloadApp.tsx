@@ -2,6 +2,7 @@ import { Download, Smartphone, Monitor, Shield, Apple } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import mobileAppScreenshot from '@/assets/mobile-app-screenshot.jpg';
+import appphoto from '@/assets/appphoto.png';
 
 const DownloadApp = () => {
   return (
@@ -26,7 +27,7 @@ const DownloadApp = () => {
               <div className="relative bg-gradient-card rounded-[2.5rem] p-2 border-2 border-border/50 shadow-card-custom">
                 <div className="bg-background rounded-[2rem] overflow-hidden">
                   <img 
-                    src={mobileAppScreenshot} 
+                    src={appphoto} 
                     alt="ThreatShield Mobile App"
                     className="w-full h-auto"
                   />
@@ -56,20 +57,29 @@ const DownloadApp = () => {
             </div>
 
             {/* Download Buttons */}
-            <div className="space-y-4">
-              <div className="flex justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 h-16 px-8"
-                >
-                  <div className="mr-3 text-2xl">📱</div>
-                  <div className="text-left">
-                    <div className="text-sm opacity-90">Get it on</div>
-                    <div className="text-lg font-semibold">Google Play</div>
-                  </div>
-                </Button>
-              </div>
-            </div>
+           <div className="space-y-4">
+  <div className="flex justify-center">
+    <Button 
+      asChild
+      size="lg" 
+      className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 h-16 px-8"
+    >
+      <a 
+        href="https://drive.google.com/drive/folders/1kZIkFRuqnvBK4ltcgzHuKlEgj3Q7sltL" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="flex items-center"
+      >
+        <div className="mr-3 text-2xl">📱</div>
+        <div className="text-left">
+          <div className="text-sm opacity-90">Get it on</div>
+          <div className="text-lg font-semibold">Google Play</div>
+        </div>
+      </a>
+    </Button>
+  </div>
+</div>
+
 
             {/* Features */}
             <Card className="bg-gradient-card border-border/50">

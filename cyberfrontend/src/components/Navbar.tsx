@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Shield, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+import logo from '@/assets/logo.png';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -190,7 +192,16 @@ const Navbar = () => {
               onClick={() => scrollToSection('hero')}
             >
               <div className="relative logo-glow">
-                <Shield className="h-8 w-8 text-blue-400 animate-glow-pulse transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
+<img 
+  src={logo}   // public folder me rakho
+  alt="App Logo" 
+  className="h-8 w-8 object-contain 
+             transition-all duration-300 
+             group-hover:rotate-12 group-hover:scale-110 
+             drop-shadow-[0_0_12px_rgba(59,130,246,0.7)] 
+             animate-pulse" 
+/>
+
                 <div className="absolute inset-0 bg-blue-400 opacity-20 blur-xl rounded-full group-hover:opacity-40 transition-opacity duration-300"></div>
               </div>
               <span className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text hover:text-transparent animate-shimmer group-hover:tracking-wider transition-all duration-300">

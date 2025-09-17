@@ -87,9 +87,9 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">Phone</h4>
                         <p className="text-muted-foreground">
-                          Sales: +1 (555) 123-4567<br />
-                          Support: +1 (555) 123-4568<br />
-                          Emergency: +1 (555) 123-4569
+                          Sales: +91 7903632892<br />
+                          Support: +91 7903632892<br />
+                          Emergency: +91 7903632892
                         </p>
                       </div>
                     </div>
@@ -105,7 +105,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-1">Email</h4>
                         <p className="text-muted-foreground">
-                          Sales: sales@threatshield.com<br />
+                          Sales: shreyashgautam2007@gmail.com<br />
                           Support: support@threatshield.com<br />
                           General: info@threatshield.com
                         </p>
