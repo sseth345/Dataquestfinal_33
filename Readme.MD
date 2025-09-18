@@ -93,39 +93,6 @@ graph TD
 - **API Webhooks** - Custom integrations
 - **Slack/Teams** - Collaborative incident response
 
----
-
-## 🏗️ System Architecture
-
-<div align="center">
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Data Sources  │    │  AI Detection   │    │   Blockchain    │
-│                 │    │     Engine      │    │   Audit Trail   │
-├─────────────────┤    ├─────────────────┤    ├─────────────────┤
-│ • Login Logs    │───▶│ • XGBoost       │───▶│ • Hash Links    │
-│ • File Access   │    │ • LSTM          │    │ • Timestamps    │
-│ • Email Data    │    │ • Isolation     │    │ • Immutable     │
-│ • Device Events │    │   Forest        │    │   Records       │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 ▼
-                    ┌─────────────────┐
-                    │  SOC Dashboard  │
-                    │                 │
-                    │ • Real-time     │
-                    │   Monitoring    │
-                    │ • Threat Stats  │
-                    │ • Alert System  │
-                    └─────────────────┘
-```
-
-</div>
-
----
-
 ## 🔌 API Documentation
 
 ### Base URL
@@ -358,81 +325,6 @@ graph LR
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-```bash
-Python 3.8+
-pip or conda
-Git
-```
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/team-fanatics/threatshield.git
-cd threatshield
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the application
-streamlit run app.py
-```
-
-### Quick Test
-```bash
-# Test the API endpoint
-curl -X POST "http://localhost:8000/predict_simple" \
-     -H "Content-Type: application/json" \
-     -d @sample_data.json
-```
-
----
-
-## 📈 Performance Metrics
-
-<div align="center">
-
-| Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|---------|----------|
-| XGBoost | **99.2%** | 98.5% | 97.8% | 98.1% |
-| LSTM | 97.8% | 96.2% | 98.1% | 97.1% |
-| Isolation Forest | 94.5% | 92.1% | 96.8% | 94.4% |
-| **Ensemble** | **99.7%** | **99.1%** | **98.9%** | **99.0%** |
-
-</div>
-
-### Confusion Matrix
-```
-                Predicted
-              Normal  Threat
-Actual Normal   892      7
-      Threat     1     63
-```
-
----
-
-## 🎯 Business Impact
-
-### Cost Savings
-- **Average breach cost prevented**: $15.38M
-- **Investigation time reduced**: 75%
-- **False positive reduction**: 60%
-- **SOC efficiency improvement**: 3x
-
-### Use Cases
-- **Financial Services**: Prevent fraud and data theft
-- **Healthcare**: Protect patient data (HIPAA compliance)
-- **Government**: Secure classified information
-- **Technology**: Protect intellectual property
-
----
-
 ## 🏆 Competition Highlights
 
 ### Innovation Points
@@ -452,13 +344,10 @@ Actual Normal   892      7
 
 ## 🔮 Future Roadmap
 
-### Phase 2 (Q2 2024)
 - [ ] Advanced behavioral biometrics
 - [ ] Graph neural networks for relationship analysis
 - [ ] Mobile app for security teams
 - [ ] Integration with SIEM platforms
-
-### Phase 3 (Q3 2024)
 - [ ] Federated learning across organizations
 - [ ] Quantum-resistant blockchain
 - [ ] Advanced NLP for email/chat analysis
@@ -471,16 +360,10 @@ Actual Normal   892      7
 <div align="center">
 
 ### Team FANATICS
-📧 **Email**: team.fanatics@hackathon.com  
-🌐 **Website**: [threatshield.ai](https://threatshield.ai)  
+🌐 **Website**: [streamlit.app](https://insider-threat-blockchain-fanatics.streamlit.app/)  
 📱 **Demo**: [Live Dashboard](https://dataquestfinal-33.onrender.com)  
 
 ---
-
-### 🏅 Awards & Recognition
-*"Best AI Innovation - DATAQUEST 2.0"*  
-*"Outstanding Security Solution - CyberSec Awards 2024"*  
-*"People's Choice Award - TechCrunch Disrupt"*
 
 ---
 
