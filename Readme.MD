@@ -476,62 +476,49 @@ Actual Normal   892      7
 <tr>
 <td align="center">
 <img src="./images/1st.png" alt="ThreatShield Dashboard" width="350">
-<br><b>Main Dashboard</b>
+<br>
 </td>
 <td align="center">
 <img src="./images/2.png" alt="Threat Analytics" width="350">
-<br><b>Threat Analytics</b>
-</td>
+<br></td>
 </tr>
 <tr>
 <td align="center">
 <img src="./images/3.png" alt="AI Detection Engine" width="350">
-<br><b>AI Detection Engine</b>
-</td>
+<br></td>
 <td align="center">
 <img src="./images/4.png" alt="Real-time Monitoring" width="350">
-<br><b>Real-time Monitoring</b>
-</td>
+<br></td>
 </tr>
 <tr>
 <td align="center">
 <img src="./images/5.png" alt="Blockchain Audit Trail" width="350">
-<br><b>Blockchain Audit Trail</b>
-</td>
+<br></td>
 <td align="center">
 <img src="./images/6.png" alt="Alert Management" width="350">
-<br><b>Alert Management</b>
-</td>
+<br></td>
 </tr>
 <tr>
 <td align="center">
 <img src="./images/7.png" alt="User Risk Scoring" width="350">
-<br><b>User Risk Scoring</b>
-</td>
+<br></td>
 <td align="center">
-<img src="./images/8.png" alt="System Health" width="350">
-<br><b>System Health Monitoring</b>
-</td>
+<img src="./images/8.jpg" alt="System Health" width="350">
+<br></td>
 </tr>
 <tr>
 <td align="center">
-<img src="./images/9.png" alt="API Integration" width="350">
-<br><b>API Integration</b>
-</td>
+<img src="./images/9.jpg" alt="API Integration" width="350">
+<br></td>
 <td align="center">
-<img src="./images/10.png" alt="Threat Trends" width="350">
-<br><b>Threat Trends Analysis</b>
-</td>
+<img src="./images/10.jpg" alt="Threat Trends" width="350">
+<br></td>
 </tr>
 <tr>
 <td align="center">
-<img src="./images/11.png" alt="Model Performance" width="350">
-<br><b>Model Performance Metrics</b>
-</td>
-<td align="center">
-<img src="./images/12.png" alt="Security Console" width="350">
-<br><b>Security Operations Console</b>
-</td>
+<img src="./images/11.jpg" alt="Model Performance" width="350">
+<br></td>
+
 </tr>
 </table>
 
