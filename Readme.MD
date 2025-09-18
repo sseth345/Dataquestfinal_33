@@ -28,7 +28,7 @@
 <tr>
 <td align="center"><img src="https://img.shields.io/badge/-Riddhi-96CEB4?style=for-the-badge&logo=github&logoColor=white"></td>
 <td align="center"><img src="https://img.shields.io/badge/-Meghna-FECA57?style=for-the-badge&logo=github&logoColor=white"></td>
-<td align="center"><img src="https://img.shields.io/badge/-Shreya-FF9FF3?style=for-the-badge&logo=github&logoColor=white"></td>
+<td align="center"><img src="https://img.shields.io/badge/-Shreeya-FF9FF3?style=for-the-badge&logo=github&logoColor=white"></td>
 </tr>
 </table>
 
