@@ -370,7 +370,7 @@ graph LR
 <img src="https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge" alt="Made with Love">
 <img src="https://img.shields.io/badge/Team-FANATICS-blue?style=for-the-badge" alt="Team FANATICS">
 <img src="https://img.shields.io/badge/Built%20for-DATAQUEST%202.0-green?style=for-the-badge" alt="Built for DATAQUEST 2.0">
-
+<img src="./images/1st.png">
 </div>
 
 ---
