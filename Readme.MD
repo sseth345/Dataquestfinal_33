@@ -452,13 +452,13 @@ Actual Normal   892      7
 
 ## 🔮 Future Roadmap
 
-### Phase 2 (Q2 2024)
+### Phase 2 (Q2 2025)
 - [ ] Advanced behavioral biometrics
 - [ ] Graph neural networks for relationship analysis
 - [ ] Mobile app for security teams
 - [ ] Integration with SIEM platforms
 
-### Phase 3 (Q3 2024)
+### Phase 3 (Q3 2025)
 - [ ] Federated learning across organizations
 - [ ] Quantum-resistant blockchain
 - [ ] Advanced NLP for email/chat analysis
